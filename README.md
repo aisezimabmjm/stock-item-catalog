@@ -103,11 +103,11 @@ MacBook
 ![search](img_2.png)
 ![delete](img_3.png)
 ![update](img_4.png)
-![export CSV/ImportT CSV](img_5.png)
+![export CSV/Import CSV](img_5.png)
 ---
 
 ## 🎥 Presentation
-(Add your Google Drive / Slides link here)
+https://canva.link/hya99kd25y051yv
 
 ---
 

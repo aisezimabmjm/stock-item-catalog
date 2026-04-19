@@ -93,10 +93,43 @@ public class InventoryManager {
 
     }
     public void exportToCSV() {
-        System.out.println("Export to CSV works!");
+        try (PrintWriter writer = new PrintWriter("inventory.csv")) {
+            for (Item item : items) {
+                writer.println(
+                        item.getId() + "," +
+                                item.getName() + "," +
+                                item.getCategory() + "," +
+                                item.getQuantity() + "," +
+                                item.getPrice() + "," +
+                                item.getSupplier()
+                );
+            }
+            System.out.println("Exported to inventory.csv successfully!");
+        } catch (IOException e) {
+            System.out.println("Error exporting CSV.");
+        }
     }
 
     public void importFromCSV() {
-        System.out.println("Import from CSV works!");
+        try (BufferedReader reader = new BufferedReader(new FileReader("inventory.csv"))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+
+                int id = Integer.parseInt(data[0]);
+                String name = data[1];
+                String category = data[2];
+                int quantity = Integer.parseInt(data[3]);
+                double price = Double.parseDouble(data[4]);
+                String supplier = data[5];
+
+                items.add(new Item(id, name, category, quantity, price, supplier));
+            }
+
+            System.out.println("Imported from inventory.csv successfully!");
+        } catch (IOException e) {
+            System.out.println("Error importing CSV.");
+        }
     }
 }
